@@ -43,6 +43,7 @@ docker run -d \
 -p 3000:3000 \
 -v /Users/apple/libs/bin/nasTools/config:/config \
 -v /Users/apple/Movies/video:/video \
+-e WEBUI_PORT=3000\
 -e PUID=501 #使用 id admin 命令查询GID和UID\
 -e PGID=20 #使用 id admin 命令查询GID和UID\
 -e UMASK=000 \
@@ -159,7 +160,7 @@ docker run -d\
  ```
 
 3. 配置豆瓣刮削,安装`douban-openapi-server`插件, 并配置插件
-[插件库地址](https://github.com/caryyu/jellyfin-plugin-repo/raw/master/manifest-us.json)
+   [插件库地址](https://github.com/caryyu/jellyfin-plugin-repo/raw/master/manifest-us.json)
 ```shell
 docker run --rm -d\
 --name douban-openapi-server-1 #容器名字\ 
