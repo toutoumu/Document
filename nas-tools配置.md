@@ -1,33 +1,35 @@
-### [alist安装]
+## [alist安装]
 
 ```shell
 docker run -d \
 --name alist-1 \
---restart unless-stopped -v \
-/share/Container/alist/data:/opt/alist/data \
+--restart unless-stopped \
+-v /share/Container/alist/data:/opt/alist/data \
 -e WEBUI_PORT=5244 \
 -p 5244:5244 \
 xhofe/alist:latest
 ```
 
-### [onelist安装]
+## [onelist安装]
 
 [nas-tools之外的另一种追剧方式](https://sleele.com/2020/03/16/%E9%AB%98%E9%98%B6%E6%95%99%E7%A8%8B-%E8%BF%BD%E5%89%A7%E5%85%A8%E6%B5%81%E7%A8%8B%E8%87%AA%E5%8A%A8%E5%8C%96/comment-page-4/)
 
 ```shell
 docker run -d \
---name onelist \
+--name onelist-1 \
 -e PUID=0 \
 -e PGID=0 \
 -e TZ=Asia/Shanghai \
+-e WEBUI_PORT=5245 \
 -p 5245:5245 \
 -v /share/Container/onelist/config:/config \
 --add-host api.themoviedb.org:13.224.161.90 \
 msterzhang/onelist:latest
 ```
-[最受欢迎的十个BT种子下载站](https://www.tianyuu.com/article/detail/id/1564.html)
 
-# [nas-tools 套件配置](https://zhuanlan.zhihu.com/p/563493451)
+## [nas-tools 套件配置](https://zhuanlan.zhihu.com/p/563493451)
+
+[最受欢迎的十个BT种子下载站](https://www.tianyuu.com/article/detail/id/1564.html)
 
 1. 如果运行报错试试这个
 
@@ -36,6 +38,8 @@ pip3 install pikpakapi
 ```
 
 2. 如果5015处理器播放失败请关掉 VPP色调映射 参考以下网址
+
+[jellyfin N5105 硬解配置【解决】该客户端与媒体不兼容，服务器未发送兼容的媒体格式](https://www.bilibili.com/read/cv20154506)
 
 [jellyfin N5105 硬解配置【解决】该客户端与媒体不兼容，服务器未发送兼容的媒体格式](https://www.bilibili.com/read/cv20154506)
 
@@ -50,28 +54,31 @@ mkdir nasTools/config
 mkdir video #这个目录 nas-tools,qbittorrent,jackett共用
 ```
 
-2. 安装nas-tools
+### 安装nas-tools
+* 账号 admin/password
 
 ```shell
-docker run -d \
---name nas-tools \
+docker run -d\
+--name nas-tools-1 \
 --hostname nas-tools \
 -p 3000:3000 \
--v /Users/apple/libs/bin/nasTools/config:/config \
--v /Users/apple/Movies/video:/video \
+-v /share/Container/nastools/config:/config \
+-v /video:/video \
 -e WEBUI_PORT=3000\
--e PUID=501 #使用 id admin 命令查询GID和UID\
--e PGID=20 #使用 id admin 命令查询GID和UID\
+-e PUID=501 \#使用 id admin 命令查询GID和UID
+-e PGID=20 \#使用 id admin 命令查询GID和UID
 -e UMASK=000 \
--e NASTOOL_AUTO_UPDATE=false #是否自动更新\
--e NASTOOL_CN_UPDATE=false   #是否使用国内镜像\
-diluka/nas-tools
+-e NASTOOL_AUTO_UPDATE=false \#是否自动更新\
+-e NASTOOL_CN_UPDATE=false   \#是否使用国内镜像\
+diluka/nas-tools:latest
 ```
 
 3. 配置
-   TMDB Api key 06bd93b81405efd92fcc86a3b6bc5bd1
 
-媒体库配置
+* TMDB Api key 
+06bd93b81405efd92fcc86a3b6bc5bd1
+
+* 媒体库配置
 /video/links/movie/
 /video/links/tv/
 
@@ -81,7 +88,7 @@ diluka/nas-tools
 
 ## [qbittorrent安装](https://hub.docker.com/r/linuxserver/qbittorrent)
 
-账号 admin/adminadmin
+* 账号 admin/adminadmin
 
 1. 创建目录
 
@@ -90,7 +97,8 @@ mkdir qbittorrent/config
 ```
 
 ```shell
-docker run -d --name=qbittorrent\
+docker run -d \
+--name=qbittorrent-1 \
 -e PUID=501\
 -e PGID=20\
 -e TZ=Etc/UTC\
@@ -98,8 +106,8 @@ docker run -d --name=qbittorrent\
 -p 8080:8080\
 -p 6880:6880\
 -p 6880:6880/udp\ 
--v /Users/apple/libs/bin/qbittorrent/config:/config #配置文件目录\ 
--v /Users/apple/Movies/video:/downloads #下载目录\ 
+-v /share/Container/Qbittorrent/config:/config #配置文件目录\ 
+-v /video:/downloads #下载目录\ 
 --restart unless-stopped\ 
 linuxserver/qbittorrent:latest
 ```
@@ -121,10 +129,10 @@ docker run -d --name=jackett-1 \
 -e TZ=Etc/UTC \
 -e AUTO_UPDATE=true \
 -p 9117:9117 \
--v /Users/apple/libs/bin/jackett/config:/config \
--v /Users/apple/Movies/video:/downloads \
+-v /share/Container/jackett/config:/config \
+-v /video:/downloads \
 --restart unless-stopped \
-linuxserver/jackett:latest \
+linuxserver/jackett:latest
 ```
 
 # [flaresolverr安装](https://hub.docker.com/r/flaresolverr/flaresolverr)
@@ -171,7 +179,7 @@ docker run -d\
  --restart unless-stopped #启动策略\
  --device /dev/dri/renderD128:/dev/dri/renderD128 #硬解驱动\
  --device /dev/dri/card0:/dev/dri/card0 #硬解驱动\
- nyanmisaka/jellyfin #哪个镜像
+ nyanmisaka/jellyfin:latest #哪个镜像
  
  ```
 
