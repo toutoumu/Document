@@ -1,14 +1,30 @@
 ### [alist安装]
 
 ```shell
-docker run -d --name="alist" \ 
---restart=always \
--v /share/Container/alist/data:/opt/alist/data \
+docker run -d \
+--name alist-1 \
+--restart unless-stopped -v \
+/share/Container/alist/data:/opt/alist/data \
+-e WEBUI_PORT=5244 \
 -p 5244:5244 \
 xhofe/alist:latest
 ```
+
+### [onelist安装]
+
 [nas-tools之外的另一种追剧方式](https://sleele.com/2020/03/16/%E9%AB%98%E9%98%B6%E6%95%99%E7%A8%8B-%E8%BF%BD%E5%89%A7%E5%85%A8%E6%B5%81%E7%A8%8B%E8%87%AA%E5%8A%A8%E5%8C%96/comment-page-4/)
 
+```shell
+docker run -d \
+--name onelist \
+-e PUID=0 \
+-e PGID=0 \
+-e TZ=Asia/Shanghai \
+-p 5245:5245 \
+-v /share/Container/onelist/config:/config \
+--add-host api.themoviedb.org:13.224.161.90 \
+msterzhang/onelist:latest
+```
 [最受欢迎的十个BT种子下载站](https://www.tianyuu.com/article/detail/id/1564.html)
 
 # [nas-tools 套件配置](https://zhuanlan.zhihu.com/p/563493451)
@@ -99,7 +115,7 @@ mkdir jackett/config
 2. 安装
 
 ```shell
-docker run -d --name=jackett \
+docker run -d --name=jackett-1 \
 -e PUID=501 \
 -e PGID=20 \
 -e TZ=Etc/UTC \
@@ -117,7 +133,7 @@ linuxserver/jackett:latest \
 
 ```shell
 docker run -d \
-  --name=flaresolverr \
+  --name=flaresolverr-1 \
   -p 8191:8191 \
   -e LOG_LEVEL=info \
   --restart unless-stopped \
@@ -162,9 +178,10 @@ docker run -d\
 3. 配置豆瓣刮削,安装`douban-openapi-server`插件, 并配置插件
    [插件库地址](https://github.com/caryyu/jellyfin-plugin-repo/raw/master/manifest-us.json)
 ```shell
-docker run --rm -d\
---name douban-openapi-server-1 #容器名字\ 
--p 6000:5000 #端口映射\ 
+docker run --rm -d \
+--name douban-openapi-server-1 \
+-p 6000:5000 \
+--restart unless-stopped \
 caryyu/douban-openapi-server:latest
 ```
 
