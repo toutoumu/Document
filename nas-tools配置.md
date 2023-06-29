@@ -101,7 +101,7 @@ docker run -d \
 --name=qbittorrent-1 \
 -e PUID=501\
 -e PGID=20\
--e TZ=Etc/UTC\
+-e TZ=Asia/Shanghai \
 -e WEBUI_PORT=8080\
 -p 8080:8080\
 -p 6880:6880\
@@ -126,7 +126,7 @@ mkdir jackett/config
 docker run -d --name=jackett-1 \
 -e PUID=501 \
 -e PGID=20 \
--e TZ=Etc/UTC \
+-e TZ=Asia/Shanghai \
 -e AUTO_UPDATE=true \
 -p 9117:9117 \
 -v /share/Container/jackett/config:/config \
@@ -173,8 +173,8 @@ docker run -d\
  --add-host=www.themoviedb.org:54.192.22.105 #host配置解决\
  --net=bridge #默认为bridge,也可改为host,不能映射端口\
  --expose 8096 #导出端口\
- -e WEBUI_PORT=8095 #webUI端口\
- -p 8095:8096 #端口映射,解决端口冲突,因为emby也用了8096\
+ -e WEBUI_PORT=8096 #webUI端口\
+ -p 8096:8096 #端口映射,解决端口冲突,因为emby也用了8096\
  -p 8920:8920 #端口映射\
  --restart unless-stopped #启动策略\
  --device /dev/dri/renderD128:/dev/dri/renderD128 #硬解驱动\
@@ -186,7 +186,7 @@ docker run -d\
 3. 配置豆瓣刮削,安装`douban-openapi-server`插件, 并配置插件
    [插件库地址](https://github.com/caryyu/jellyfin-plugin-repo/raw/master/manifest-us.json)
 ```shell
-docker run --rm -d \
+docker run -d \
 --name douban-openapi-server-1 \
 -p 6000:5000 \
 --restart unless-stopped \
