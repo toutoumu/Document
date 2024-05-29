@@ -1,3 +1,5 @@
+# nas-tools 使用
+
 ## [alist安装]
 
 ```shell
@@ -54,7 +56,7 @@ mkdir nasTools/config
 mkdir video #这个目录 nas-tools,qbittorrent,jackett共用
 ```
 
-### 安装nas-tools
+## 安装nas-tools
 * 账号 admin/password
 
 ```shell
@@ -112,7 +114,7 @@ docker run -d \
 linuxserver/qbittorrent:latest
 ```
 
-# [jackett](https://hub.docker.com/r/linuxserver/jackett)
+## [jackett](https://hub.docker.com/r/linuxserver/jackett)
 
 1. 创建目录
 
@@ -193,7 +195,7 @@ docker run -d \
 caryyu/douban-openapi-server:latest
 ```
 
-# docker 镜像备份
+## docker 镜像备份
 
 Docker支持使用docker save和docker load命令来实现镜像备份和恢复。具体步骤如下：
 
