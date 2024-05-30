@@ -1,6 +1,25 @@
 # 软件安装
 
-## 1. albert 软件启动器
+## 0. Ulauncher安装软件启动器
+
+[官网](https://github.com/Ulauncher)
+[快捷键设置](https://github.com/Ulauncher/Ulauncher/wiki/Hotkey-In-Wayland)
+
+```shell
+# 打开官网下载安装包
+sudo dpkg -i 安装包名称
+
+# 配置快捷键
+sudo apt install wmctrl
+# 进入 设置 >> 键盘 >> 键盘快捷键 >> 添加自定义快捷键
+# 命令填写 ulauncher-toggle
+
+#  设置开机启动（可在优化里添加）
+systemctl --user enable --now ulauncher
+
+```
+
+## 1. albert软件启动器(不支持wayland 不建议使用)
 
 [官网](https://albertlauncher.github.io/setup/)
 [安装方法](https://blog.csdn.net/weixin_42405819/article/details/135025334)
