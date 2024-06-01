@@ -147,6 +147,8 @@ https://blog.csdn.net/fengyuyeguirenenen/article/details/130864664
    [配置](https://www.cnblogs.com/hh9515/p/17692258.html)
 
 ### 解决 配置文件 `fusuma.config.yam` `dbus-send` 四指捏合无响应问题
+https://www.reddit.com/r/gnome/comments/rmvk0p/gnomeshell_dbus_method_calls_stopped_working/?rdt=48119
+https://www.reddit.com/r/gnome/comments/pudppv/how_to_turn_on_unsafemode_context/
 解决方案 ：
 1] ALT + F2
 2] 输入“lg”，然后按 ENTER
