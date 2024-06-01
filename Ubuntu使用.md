@@ -146,6 +146,12 @@ https://blog.csdn.net/fengyuyeguirenenen/article/details/130864664
    [官网](https://github.com/iberianpig/fusuma)
    [配置](https://www.cnblogs.com/hh9515/p/17692258.html)
 
+### 解决 `dbus-send` 四指捏合无响应问题
+解决方案 ：
+1] ALT + F2
+2] 输入“lg”，然后按 ENTER
+3] 输入“global.context.unsafe_mode = true”，然后按 ENTER
+
 ## 8. 输入法设置
    ubuntu22.04安装 Fcitx5输入法，并解决 chrome启用wayland后无法输入中文问题。
    https://blog.p2hp.com/archives/11752

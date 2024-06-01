@@ -12,18 +12,34 @@ swipe:
       # 四指右划模拟三指右划
       sendkey: 'LEFTALT+LEFTCTRL+LEFT'
 
+        #pinch:
+        #  3:
+        #    in:
+        #      sendkey: 'RIGHTMETA+A' # Zoom in
+        #    out:
+        #      sendkey: 'RIGHTMETA+D' # Zoom out
+        #  4:
+        #    in:
+        #      sendkey: 'RIGHTMETA+A' # Window overview
+        #    out:
+        #      sendkey: 'RIGHTMETA+D' # Workspace overview
 pinch:
-  3:
+  2:
     in:
-      sendkey: 'RIGHTMETA+A' # 应用程序列表
+      sendkey: 'LEFTCTRL+EQUAL'
+      threshold: 0.1
     out:
-      sendkey: 'RIGHTMETA+D' # 显示桌面
+      sendkey: 'LEFTCTRL+MINUS'
+      threshold: 0.1
   4:
     in:
-      sendkey: 'RIGHTMETA+A' # 应用程序列表
+      command: "程度--session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:'if (Main.overview.visible && Main.overview.viewSelector._showAppsButton.checked) { Main.overview.hide();Main.overview.viewSelector._showAppsButton.checked=false;} else {Main.overview.show()}'"
+      threshold: 1
+      interval: 2
     out:
-      sendkey: 'RIGHTMETA+D' # 显示桌面
-
+      command: "dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:'if (Main.overview.visible && !Main.overview.viewSelector._showAppsButton.checked) {Main.overview.hide()} else { Main.overview.viewSelector._showAppsButton.checked = true;Main.overview.show();}'"
+      threshold: 1
+      interval: 2
 threshold:
   swipe: 0.3
   pinch: 0.5
