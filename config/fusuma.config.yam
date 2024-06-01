@@ -1,16 +1,22 @@
+# 上下左右轻扫手势
 swipe:
   4:
-  # 增加四指上滑动模拟三指上滑 RIGHTMETA+A
+    # 增加四指上滑动模拟三指上滑 RIGHTMETA+A
     up:
       sendkey: 'RIGHTMETA'
+    # 下划显示桌面
     down:
-      sendkey: 'RIGHTMETA+A'
+      sendkey: 'RIGHTMETA+D'
     left:
       # 四指左划模拟三指左划
-      sendkey: 'LEFTALT+LEFTCTRL+RIGHT'
+      # sendkey: 'LEFTALT+LEFTCTRL+RIGHT'
+      # 前进后退
+      sendkey: 'LEFTALT+RIGHT'
     right:
       # 四指右划模拟三指右划
-      sendkey: 'LEFTALT+LEFTCTRL+LEFT'
+      # sendkey: 'LEFTALT+LEFTCTRL+LEFT'
+      # 前进后退
+      sendkey: 'LEFTALT+LEFT'
 
         #pinch:
         #  3:
@@ -36,11 +42,13 @@ pinch:
   #      interval: 1
   4:
     in:
-      command: "dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:'if (Main.overview.visible && Main.overview.viewSelector._showAppsButton.checked) { Main.overview.hide();Main.overview.viewSelector._showAppsButton.checked=false;} else {Main.overview.show()}'"
+      #command: "dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:'if (Main.overview.visible && Main.overview.viewSelector._showAppsButton.checked) { Main.overview.hide();Main.overview.viewSelector._showAppsButton.checked=false;} else {Main.overview.show()}'"
+      command: "dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:'Main.overview.toggle();'"
       threshold: 0.3
       interval: 2
     out:
-      command: "dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:'if (Main.overview.visible && !Main.overview.viewSelector._showAppsButton.checked) {Main.overview.hide()} else { Main.overview.viewSelector._showAppsButton.checked = true;Main.overview.show();}'"
+      #command: "dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:'if (Main.overview.visible && !Main.overview.viewSelector._showAppsButton.checked) {Main.overview.hide()} else { Main.overview.viewSelector._showAppsButton.checked = true;Main.overview.show();}'"
+      command: "dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:'Main.overview.toggle();'"
       threshold: 0.3
       interval: 2
 threshold:
