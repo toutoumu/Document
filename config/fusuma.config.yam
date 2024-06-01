@@ -24,21 +24,24 @@ swipe:
         #    out:
         #      sendkey: 'RIGHTMETA+D' # Workspace overview
 pinch:
-  2:
-    in:
-      sendkey: 'LEFTCTRL+EQUAL'
-      threshold: 0.1
-    out:
-      sendkey: 'LEFTCTRL+MINUS'
-      threshold: 0.1
+  #  两指头缩放
+  #  2:
+  #    out:
+  #      sendkey: 'LEFTCTRL+EQUAL'
+  #      threshold: 0.5
+  #      interval: 1
+  #    in:
+  #      sendkey: 'LEFTCTRL+MINUS'
+  #      threshold: 0.5
+  #      interval: 1
   4:
     in:
-      command: "程度--session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:'if (Main.overview.visible && Main.overview.viewSelector._showAppsButton.checked) { Main.overview.hide();Main.overview.viewSelector._showAppsButton.checked=false;} else {Main.overview.show()}'"
-      threshold: 1
+      command: "dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:'if (Main.overview.visible && Main.overview.viewSelector._showAppsButton.checked) { Main.overview.hide();Main.overview.viewSelector._showAppsButton.checked=false;} else {Main.overview.show()}'"
+      threshold: 0.3
       interval: 2
     out:
       command: "dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:'if (Main.overview.visible && !Main.overview.viewSelector._showAppsButton.checked) {Main.overview.hide()} else { Main.overview.viewSelector._showAppsButton.checked = true;Main.overview.show();}'"
-      threshold: 1
+      threshold: 0.3
       interval: 2
 threshold:
   swipe: 0.3
