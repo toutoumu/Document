@@ -130,6 +130,7 @@ https://blog.csdn.net/fengyuyeguirenenen/article/details/130864664
 
 ## 5. Chrome浏览器 设置wayland
    打开[设置](chrome://flags/) ，搜索 `Preferred Ozone platform`，设置为 `wayland`。
+   Windows Scrolling Personality
 
 ## 6. 微信
    [下载地址](https://software.openkylin.top/openkylin/yangtze/pool/all/)
@@ -141,6 +142,7 @@ https://blog.csdn.net/fengyuyeguirenenen/article/details/130864664
 ```
 
 ## 7. fusuma手势设置
+   配置文件 fusuma.config.yam
    [官网](https://github.com/iberianpig/fusuma)
    [配置](https://www.cnblogs.com/hh9515/p/17692258.html)
 

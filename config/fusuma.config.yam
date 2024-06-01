@@ -1,0 +1,33 @@
+swipe:
+  4:
+  # 增加四指上滑动模拟三指上滑 RIGHTMETA+A
+    up:
+      sendkey: 'RIGHTMETA'
+    down:
+      sendkey: 'RIGHTMETA+A'
+    left:
+      # 四指左划模拟三指左划
+      sendkey: 'LEFTALT+LEFTCTRL+RIGHT'
+    right:
+      # 四指右划模拟三指右划
+      sendkey: 'LEFTALT+LEFTCTRL+LEFT'
+
+pinch:
+  3:
+    in:
+      sendkey: 'RIGHTMETA+A' # 应用程序列表
+    out:
+      sendkey: 'RIGHTMETA+D' # 显示桌面
+  4:
+    in:
+      sendkey: 'RIGHTMETA+A' # 应用程序列表
+    out:
+      sendkey: 'RIGHTMETA+D' # 显示桌面
+
+threshold:
+  swipe: 0.3
+  pinch: 0.5
+
+interval:
+  swipe: 0.6
+  pinch: 3
