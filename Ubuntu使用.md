@@ -154,6 +154,9 @@ https://www.reddit.com/r/gnome/comments/pudppv/how_to_turn_on_unsafemode_context
 2] 输入“lg”，然后按 ENTER
 3] 输入“global.context.unsafe_mode = true”，然后按 ENTER
 
+据说这个可以解决，但是我没成功
+https://github.com/ramottamado/eval-gjs#installation
+
 ## 8. 输入法设置
    ubuntu22.04安装 Fcitx5输入法，并解决 chrome启用wayland后无法输入中文问题。
    https://blog.p2hp.com/archives/11752
