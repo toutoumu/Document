@@ -146,7 +146,7 @@ https://blog.csdn.net/fengyuyeguirenenen/article/details/130864664
    [官网](https://github.com/iberianpig/fusuma)
    [配置](https://www.cnblogs.com/hh9515/p/17692258.html)
 
-### 解决 `dbus-send` 四指捏合无响应问题
+### 解决 配置文件 `fusuma.config.yam` `dbus-send` 四指捏合无响应问题
 解决方案 ：
 1] ALT + F2
 2] 输入“lg”，然后按 ENTER
