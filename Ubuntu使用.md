@@ -1,5 +1,12 @@
 # 软件安装
 
+## 禁用双击拖动
+```shell
+gsettings set org.gnome.desktop.peripherals.touchpad tap-and-drag false
+gsettings set org.gnome.desktop.peripherals.touchpad tap-and-drag false
+
+```
+
 ## 0. Ulauncher安装软件启动器
 
 [官网](https://github.com/Ulauncher)
@@ -142,6 +149,7 @@ https://blog.csdn.net/fengyuyeguirenenen/article/details/130864664
 ```
 
 ## 7. fusuma手势设置
+   sudo vi ~/.config/fusuma/config.yml
    配置文件 fusuma.config.yam
    [官网](https://github.com/iberianpig/fusuma)
    [配置](https://www.cnblogs.com/hh9515/p/17692258.html)
@@ -150,6 +158,7 @@ https://blog.csdn.net/fengyuyeguirenenen/article/details/130864664
 https://www.reddit.com/r/gnome/comments/rmvk0p/gnomeshell_dbus_method_calls_stopped_working/?rdt=48119
 https://www.reddit.com/r/gnome/comments/pudppv/how_to_turn_on_unsafemode_context/
 解决方案 ：
+[加入设置菜单中](https://github.com/linushdot/unsafe-mode-menu)
 1] ALT + F2
 2] 输入“lg”，然后按 ENTER
 3] 输入“global.context.unsafe_mode = true”，然后按 ENTER
@@ -160,3 +169,5 @@ https://github.com/ramottamado/eval-gjs#installation
 ## 8. 输入法设置
    ubuntu22.04安装 Fcitx5输入法，并解决 chrome启用wayland后无法输入中文问题。
    https://blog.p2hp.com/archives/11752
+
+[fcitx5在chrome下输入漏字问题]https://www.cnblogs.com/hh9515/p/18109725
