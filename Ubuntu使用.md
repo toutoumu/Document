@@ -1,5 +1,12 @@
 # 软件安装
 
+## 下面用的的配置文件
+```shell
+sudo vi /etc/libinput.conf
+sudo vi /etc/keyd/default.conf
+sudo vi ~/.config/fusuma/config.yml
+```
+
 ## 禁用双击拖动
 ```shell
 gsettings set org.gnome.desktop.peripherals.touchpad tap-and-drag false
@@ -97,7 +104,7 @@ https://blog.csdn.net/fengyuyeguirenenen/article/details/130864664
     # 启动
     sudo systemctl enable keyd && sudo systemctl start keyd
     # 编辑i配置文件
-    /etc/keyd/default.conf
+    sudo vi /etc/keyd/default.conf
     # 检查配置文件是否正确
     sudo systemctl enable keyd
     # 重新加载配置文件
