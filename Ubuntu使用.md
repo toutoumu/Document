@@ -1,5 +1,26 @@
 # 软件安装
 
+## 常用配置 
+
+```shell
+# windows 键盘用这个配置
+sudo cp -r /home/toutoumu/WorkSpace/Document/config/keyd/windows.conf /etc/keyd/default.conf
+# 校验文件
+sudo systemctl enable keyd
+# 重新加载配置
+sudo keyd reload
+```
+
+```shell
+# mac 键盘用这个配置
+sudo cp -r /home/toutoumu/WorkSpace/Document/config/keyd/macos.conf /etc/keyd/default.conf
+# 校验文件
+sudo systemctl enable keyd
+# 重新加载配置
+sudo keyd reload
+
+```
+
 ## 下面用的的配置文件
 ```shell
 sudo vi /etc/libinput.conf
