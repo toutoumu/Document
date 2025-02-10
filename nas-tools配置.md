@@ -1,5 +1,7 @@
 # nas-tools 使用
 
+## [小爱音箱播放音乐](https://github.com/hanxi/xiaomusic)
+
 ## [alist安装]
 
 ```shell
@@ -74,7 +76,6 @@ docker run -d\
 -e NASTOOL_CN_UPDATE=false   \#是否使用国内镜像\
 diluka/nas-tools:latest
 ```
-
 3. 配置
 
 * TMDB Api key 
@@ -164,25 +165,7 @@ mkdir jellyfin/cache
 2. 安装jellyfin
 
 ```shell
-docker run -d\
- --name jellyfin-1 #容器名字\
- --privileged=true #特殊权限必须开启,否则无法硬解\
- --volume /share/Container/jellyfin/config:/config #配置文件路径\
- --volume /share/Container/jellyfin/cache:/cache   #缓存路径\
- --volume /share/:/media #媒体文件路径,决定了刮削范围\
- --add-host=api.themoviedb.org:13.225.174.30 #host配置解决\
- --add-host=image.tmdb.org:13.227.73.57      #host配置解决\
- --add-host=www.themoviedb.org:54.192.22.105 #host配置解决\
- --net=bridge #默认为bridge,也可改为host,不能映射端口\
- --expose 8096 #导出端口\
- -e WEBUI_PORT=8096 #webUI端口\
- -p 8096:8096 #端口映射,解决端口冲突,因为emby也用了8096\
- -p 8920:8920 #端口映射\
- --restart unless-stopped #启动策略\
- --device /dev/dri/renderD128:/dev/dri/renderD128 #硬解驱动\
- --device /dev/dri/card0:/dev/dri/card0 #硬解驱动\
- nyanmisaka/jellyfin:latest #哪个镜像
- 
+docker run -d --name jellyfin-1  --privileged=true  --volume /share/Container/jellyfin/config:/config --volume /share/Container/jellyfin/cache:/cache --volume /share/:/media --add-host=api.themoviedb.org:13.225.174.30 --add-host=image.tmdb.org:13.227.73.57 --add-host=www.themoviedb.org:54.192.22.105 --net=bridge --expose 8096 -e WEBUI_PORT=8096 -p 8096:8096 -p 8920:8920 --restart unless-stopped --device /dev/dri/renderD128:/dev/dri/renderD128 --device /dev/dri/card0:/dev/dri/card0 nyanmisaka/jellyfin:latest
  ```
 
 3. 配置豆瓣刮削,安装`douban-openapi-server`插件, 并配置插件
