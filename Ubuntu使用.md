@@ -1,5 +1,40 @@
 # 软件安装
 
+## 常用配置 
+
+```shell
+# windows 键盘用这个配置
+sudo cp -r /home/toutoumu/WorkSpace/Document/config/keyd/windows.conf /etc/keyd/default.conf
+# 校验文件
+sudo systemctl enable keyd
+# 重新加载配置
+sudo keyd reload
+```
+
+```shell
+# mac 键盘用这个配置
+sudo cp -r /home/toutoumu/WorkSpace/Document/config/keyd/macos.conf /etc/keyd/default.conf
+# 校验文件
+sudo systemctl enable keyd
+# 重新加载配置
+sudo keyd reload
+
+```
+
+## 下面用的的配置文件
+```shell
+sudo vi /etc/libinput.conf
+sudo vi /etc/keyd/default.conf
+sudo vi ~/.config/fusuma/config.yml
+```
+
+## 禁用双击拖动
+```shell
+gsettings set org.gnome.desktop.peripherals.touchpad tap-and-drag false
+gsettings set org.gnome.desktop.peripherals.touchpad tap-and-drag false
+
+```
+
 ## 0. Ulauncher安装软件启动器
 
 [官网](https://github.com/Ulauncher)
@@ -90,7 +125,7 @@ https://blog.csdn.net/fengyuyeguirenenen/article/details/130864664
     # 启动
     sudo systemctl enable keyd && sudo systemctl start keyd
     # 编辑i配置文件
-    /etc/keyd/default.conf
+    sudo vi /etc/keyd/default.conf
     # 检查配置文件是否正确
     sudo systemctl enable keyd
     # 重新加载配置文件
@@ -130,6 +165,7 @@ https://blog.csdn.net/fengyuyeguirenenen/article/details/130864664
 
 ## 5. Chrome浏览器 设置wayland
    打开[设置](chrome://flags/) ，搜索 `Preferred Ozone platform`，设置为 `wayland`。
+   Windows Scrolling Personality
 
 ## 6. 微信
    [下载地址](https://software.openkylin.top/openkylin/yangtze/pool/all/)
@@ -141,9 +177,24 @@ https://blog.csdn.net/fengyuyeguirenenen/article/details/130864664
 ```
 
 ## 7. fusuma手势设置
+   sudo vi ~/.config/fusuma/config.yml
+   配置文件 fusuma.config.yam
    [官网](https://github.com/iberianpig/fusuma)
    [配置](https://www.cnblogs.com/hh9515/p/17692258.html)
+
+### 解决 配置文件 `fusuma.config.yam` `dbus-send` 四指捏合无响应问题
+   https://www.reddit.com/r/gnome/comments/rmvk0p/gnomeshell_dbus_method_calls_stopped_working/?rdt=48119
+   https://www.reddit.com/r/gnome/comments/pudppv/how_to_turn_on_unsafemode_context/      
+   解决方案 ：
+   [加入设置菜单中](https://github.com/linushdot/unsafe-mode-menu)
+   1] ALT + F2
+   2] 输入“lg”，然后按 ENTER
+   3] 输入“global.context.unsafe_mode = true”，然后按 ENTER
+
+据说这个可以解决，但是我没成功
+https://github.com/ramottamado/eval-gjs#installation
 
 ## 8. 输入法设置
    ubuntu22.04安装 Fcitx5输入法，并解决 chrome启用wayland后无法输入中文问题。
    https://blog.p2hp.com/archives/11752
+   [fcitx5在chrome下输入漏字问题]https://www.cnblogs.com/hh9515/p/18109725
